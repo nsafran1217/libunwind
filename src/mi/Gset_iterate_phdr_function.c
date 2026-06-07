@@ -1,5 +1,13 @@
 #include "libunwind_i.h"
 
+#if defined(HAVE_DL_ITERATE_PHDR)
+# if defined(HAVE_LINK_H)
+#  include <link.h>
+# elif defined(HAVE_SYS_LINK_H)
+#  include <sys/link.h>
+# endif
+#endif
+
 //! Set an alternative function to use in place of dl_iterate_phdr.
 /*! Suggested use is to specify an async-signal safe implementation.
  *  If not set (or set to NULL) the system dl_iterate_phdr will

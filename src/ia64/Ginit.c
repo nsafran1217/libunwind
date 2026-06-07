@@ -30,6 +30,15 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.  */
 # include <sys/uc_access.h>
 #endif
 
+#if defined(HAVE_DL_ITERATE_PHDR)
+# if defined(HAVE_LINK_H)
+#  include <link.h>
+# elif defined(HAVE_SYS_LINK_H)
+#  include <sys/link.h>
+# endif
+#endif
+
+
 #ifdef UNW_REMOTE_ONLY
 
 /* unw_local_addr_space is a NULL pointer in this case.  */
